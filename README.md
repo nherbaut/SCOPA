@@ -1,3 +1,6 @@
-# java-maven-quickstart-latest
+Un exemple de jeu supportant le réseau
 
- this is an up-to-date base archetype for quick starting modern java CLI apps 
+* LocalWarGame la version du jeu supportant le jeu en local
+* WarGameEngine le moteur du jeu
+* WarGameNetorkPlayer le joueur distant en cas de partie réseau
+* WarGameNetworkEngine la version du jeu supportant le réseau

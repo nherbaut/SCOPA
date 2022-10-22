@@ -9,7 +9,10 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Guest {
+/**
+ * this is the player part of the network version of the war game
+ */
+public class WarGameNetorkPlayer {
 
     static final String playerId = "Player-" + new Random().nextInt();
     static final Deque<Card> hand = new LinkedList<>();
@@ -29,7 +32,7 @@ public class Guest {
                     handleCardsForYou(command);
                     break;
                 case "playACard":
-                    System.out.println("I have "+hand.stream().map(Card::toFancyString).collect(Collectors.joining(" ")));
+                    System.out.println("I have " + hand.stream().map(Card::toFancyString).collect(Collectors.joining(" ")));
                     handlePlayACard(command);
                     break;
                 case "gameOver":
@@ -40,9 +43,17 @@ public class Guest {
         }
     }
 
+    private static void handleCardsForYou(GameCommand command) {
+
+        for (Card card : Card.stringToCards(command.body())) {
+            hand.offerLast(card);
+        }
+
+    }
+
     private static void handlePlayACard(GameCommand command) {
         if (command.params().get("playerId").equals(playerId)) {
-            if (hand.size() > 0) {
+            if (!hand.isEmpty()) {
                 playerFacade.sendGameCommandToAll(war, new GameCommand("card", hand.pollFirst().toString()));
             } else {
                 playerFacade.sendGameCommandToAll(war, new GameCommand("outOfCard", playerId));
@@ -57,13 +68,5 @@ public class Guest {
             System.out.println("I've lost :-(");
         }
         System.exit(0);
-    }
-
-    private static void handleCardsForYou(GameCommand command) {
-
-        for (Card card : Card.stringToCards(command.body())) {
-            hand.offerLast(card);
-        }
-
     }
 }
