@@ -1,23 +1,29 @@
 # Règles
 
-Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
+La Scopa se joue avec 40 cartes de symbole coupes, épées, bâtons et deniers. Chaque symbole comporte un as, un valet, un cavalier, un roi et des cartes de valeurs allant de 2 à 7. Le jeu se joue à au moins deux joueurs et en nombre pair et comporte un maitre du jeu non joueur.
 
 ## Mise en place
 
-Chaque joueur reçoit un nombre déterminé de cartes tirées aléatoirement, qu'il garde face cachée.
+On distribue 3 cartes à chaque joueur et on en pose 4 face découverte sur la table. Si parmi ces cartes il y a 3 ou 4 rois, on ne pourra pas faire de scopa durant la partie, on remet donc 4 autres cartes.
 
 ## Déroulé de la partie
 
-Les joueurs sont répartis dans l'ordre d'arrivée. Chaque joueur affronte le prochain dans un duel, à tour de rôle (le dernier joueur affronte le premier). Si un joueur n'a plus de carte, il perd la partie et ne peut plus joueur.
+Les joueurs sont répartis dans l'ordre d'arrivée. Chaque joueur joue à tour de rôle (le dernier joueur affronte le premier) et procède de la façon suivante : 
+-	soit une paire est possible, c’est-à-dire que le joueur peut récupérer une carte de la table avec une de ses cartes de la même valeur. Le joueur conserve les cartes dans une liste ;
+-	soit une scopa est possible, c’est-à-dire qu’en faisait une paire, le joueur récupère la totalité des cartes sur la table. Le joueur conserve les cartes dans une liste et marque sa carte scopa ; 
+-	soit rien n’est pas possible, le joueur dépose donc la carte de son choix sur la table.
+A la fin de chaque tour, une carte est distribuée à chaque joueur pour qu’ils en aient toujours 3.
 
-### Déroulé des duels
-
-* Lors d'un duel, chacun de joueur joue une carte de sa pile. Le joueur ayant joué la carte de plus haute valeur l'emporte et met sous sa pile les cartes jouées, en les mélangeant.
-* Si les deux joueurs ont joué une carte de même valeur, le duel recommence en accumulant les cartes jouées de telle sorte à ce que le gagnant empoche la totalité des cartes du duel.
 
 ## Fin de la partie
 
-Le gagnant est le dernier joueur en lice.
+A la fin de la partie les points sont répartis de la manière suivante :
+-	1 point pour le joueur qui a le plus de cartes ;
+-	1 point pour le joueur qui a le settebello (7 de deniers) ;
+-	1 point pour le joueur qui a le plus de cartes de deniers ; 
+-	1 point pour chaque scopa effectuée.
+Le gagnant est celui qui a le plus de points.
+
 
 ### Détail des classes principales
 
