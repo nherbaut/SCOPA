@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * this class is a abstract version of the engine, to be used locally on through the network
  */
-public abstract class LocalEngine {
+public abstract class ScopaEngine {
 
     public static final int CARDS_IN_HAND_INITIAL_COUNT = 3;
 
