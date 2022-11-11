@@ -8,19 +8,19 @@ import fr.pantheonsorbonne.miage.model.GameCommand;
 import java.util.*;
 
 /**
- * This class implements the war game with the network engine
+ * This class implements the scopa with the network engine
  */
-public class WarGameNetworkEngine extends WarGameEngine {
+public class ScopaNetworkEngine extends ScopaEngine {
     private static final int PLAYER_COUNT = 3;
 
     private final HostFacade hostFacade;
     private final Set<String> players;
-    private final Game war;
+    private final Game scopa;
 
-    public WarGameNetworkEngine(HostFacade hostFacade, Set<String> players, fr.pantheonsorbonne.miage.model.Game war) {
+    public ScopaNetworkEngine(HostFacade hostFacade, Set<String> players, fr.pantheonsorbonne.miage.model.Game scopa) {
         this.hostFacade = hostFacade;
         this.players = players;
-        this.war = war;
+        this.scopa = scopa;
     }
 
     public static void main(String[] args) {
@@ -31,13 +31,13 @@ public class WarGameNetworkEngine extends WarGameEngine {
         //set the name of the player
         hostFacade.createNewPlayer("Host");
 
-        //create a new game of war
-        fr.pantheonsorbonne.miage.model.Game war = hostFacade.createNewGame("WAR");
+        //create a new game of scopa
+        fr.pantheonsorbonne.miage.model.Game scopa = hostFacade.createNewGame("SCOPA");
 
         //wait for enough players to join
         hostFacade.waitForExtraPlayerCount(PLAYER_COUNT);
 
-        WarGameEngine host = new WarGameNetworkEngine(hostFacade, war.getPlayers(), war);
+        ScopaEngine host = new ScopaNetworkEngine(hostFacade, scopa.getPlayers(), scopa);
         host.play();
 
 
@@ -50,7 +50,7 @@ public class WarGameNetworkEngine extends WarGameEngine {
      */
     @Override
     protected Set<String> getInitialPlayers() {
-        return this.war.getPlayers();
+        return this.scopa.getPlayers();
     }
 
     /**
@@ -61,13 +61,13 @@ public class WarGameNetworkEngine extends WarGameEngine {
      */
     @Override
     protected void giveCardsToPlayer(String playerName, String hand) {
-        hostFacade.sendGameCommandToPlayer(war, playerName, new GameCommand("cardsForYou", hand));
+        hostFacade.sendGameCommandToPlayer(scopa, playerName, new GameCommand("cardsForYou", hand));
     }
 
 
     @Override
     protected void declareWinner(String winner) {
-        hostFacade.sendGameCommandToPlayer(war, winner, new GameCommand("gameOver", "win"));
+        hostFacade.sendGameCommandToPlayer(scopa, winner, new GameCommand("gameOver", "win"));
     }
 
     /**
@@ -86,11 +86,11 @@ public class WarGameNetworkEngine extends WarGameEngine {
         } catch (NoMoreCardException nmc) {
             //contestant A is out of cards
             //we send him a gameover
-            hostFacade.sendGameCommandToPlayer(war, cardProviderPlayer, new GameCommand("gameOver"));
+            hostFacade.sendGameCommandToPlayer(scopa, cardProviderPlayer, new GameCommand("gameOver"));
             //remove him from the queue so he won't play again
             players.remove(cardProviderPlayer);
             //give back all the cards for this round to the second players
-            hostFacade.sendGameCommandToPlayer(war, cardProviderPlayerOpponent, new GameCommand("cardsForYou", Card.cardsToString(leftOverCard.toArray(new Card[leftOverCard.size()]))));
+            hostFacade.sendGameCommandToPlayer(scopa, cardProviderPlayerOpponent, new GameCommand("cardsForYou", Card.cardsToString(leftOverCard.toArray(new Card[leftOverCard.size()]))));
             return null;
         }
 
@@ -108,7 +108,7 @@ public class WarGameNetworkEngine extends WarGameEngine {
         cards.addAll(roundStack);
         //shuffle the round deck so we are not stuck
         Collections.shuffle(cards);
-        hostFacade.sendGameCommandToPlayer(war, winner, new GameCommand("cardsForYou", Card.cardsToString(cards.toArray(new Card[cards.size()]))));
+        hostFacade.sendGameCommandToPlayer(scopa, winner, new GameCommand("cardsForYou", Card.cardsToString(cards.toArray(new Card[cards.size()]))));
     }
 
     /**
@@ -122,8 +122,8 @@ public class WarGameNetworkEngine extends WarGameEngine {
      */
     @Override
     protected Card getCardFromPlayer(String player) throws NoMoreCardException {
-        hostFacade.sendGameCommandToPlayer(war, player, new GameCommand("playACard"));
-        GameCommand expectedCard = hostFacade.receiveGameCommand(war);
+        hostFacade.sendGameCommandToPlayer(scopa, player, new GameCommand("playACard"));
+        GameCommand expectedCard = hostFacade.receiveGameCommand(scopa);
         if (expectedCard.name().equals("card")) {
             return Card.valueOf(expectedCard.body());
         }

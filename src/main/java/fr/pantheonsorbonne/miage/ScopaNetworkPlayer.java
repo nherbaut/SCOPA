@@ -10,23 +10,23 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
- * this is the player part of the network version of the war game
+ * this is the player part of the network version of the scopa
  */
-public class WarGameNetorkPlayer {
+public class ScopaNetworkPlayer {
 
     static final String playerId = "Player-" + new Random().nextInt();
     static final Deque<Card> hand = new LinkedList<>();
     static final PlayerFacade playerFacade = Facade.getFacade();
-    static Game war;
+    static Game scopa;
 
     public static void main(String[] args) {
 
         playerFacade.waitReady();
         playerFacade.createNewPlayer(playerId);
-        war = playerFacade.autoJoinGame("WAR");
+        scopa = playerFacade.autoJoinGame("SCOPA");
         while (true) {
 
-            GameCommand command = playerFacade.receiveGameCommand(war);
+            GameCommand command = playerFacade.receiveGameCommand(scopa);
             switch (command.name()) {
                 case "cardsForYou":
                     handleCardsForYou(command);
@@ -54,9 +54,9 @@ public class WarGameNetorkPlayer {
     private static void handlePlayACard(GameCommand command) {
         if (command.params().get("playerId").equals(playerId)) {
             if (!hand.isEmpty()) {
-                playerFacade.sendGameCommandToAll(war, new GameCommand("card", hand.pollFirst().toString()));
+                playerFacade.sendGameCommandToAll(scopa, new GameCommand("card", hand.pollFirst().toString()));
             } else {
-                playerFacade.sendGameCommandToAll(war, new GameCommand("outOfCard", playerId));
+                playerFacade.sendGameCommandToAll(scopa, new GameCommand("outOfCard", playerId));
             }
         }
     }

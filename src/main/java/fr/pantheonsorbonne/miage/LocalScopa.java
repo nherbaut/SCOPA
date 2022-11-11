@@ -7,14 +7,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * this class implements the war game locally
+ * this class implements the scopa locally
  */
-public class LocalWarGame extends WarGameEngine {
+public class LocalScopa extends ScopaEngine {
 
     private final Set<String> initialPlayers;
     private final Map<String, Queue<Card>> playerCards = new HashMap<>();
 
-    public LocalWarGame(Set<String> initialPlayers) {
+    public LocalScopa(Set<String> initialPlayers) {
         this.initialPlayers = initialPlayers;
         for (String player : initialPlayers) {
             playerCards.put(player, new LinkedList<>());
@@ -22,8 +22,8 @@ public class LocalWarGame extends WarGameEngine {
     }
 
     public static void main(String... args) {
-        LocalWarGame localWarGame = new LocalWarGame(Set.of("Joueur1", "Joueur2", "Joueur3"));
-        localWarGame.play();
+        LocalScopa localScopa = new LocalScopa(Set.of("Joueur1", "Joueur2", "Joueur3"));
+        localScopa.play();
 
     }
 

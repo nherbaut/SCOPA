@@ -12,12 +12,12 @@ import java.util.Set;
 /**
  * this class is a abstract version of the engine, to be used locally on through the network
  */
-public abstract class WarGameEngine {
+public abstract class LocalEngine {
 
     public static final int CARDS_IN_HAND_INITIAL_COUNT = 3;
 
     /**
-     * play a war game wit the provided players
+     * play a scopa with the provided players
      */
     public void play() {
         //send the initial hand to every players
@@ -25,17 +25,17 @@ public abstract class WarGameEngine {
             //get random cards
             Card[] cards = Deck.getRandomCards(CARDS_IN_HAND_INITIAL_COUNT);
             // transform them to String
-            String hand = Card.cardsToString(cards);
+            String hand = Card.cardsToString(cards);  //changer ça si on utilise pas le string
             //send them to this players
             giveCardsToPlayer(playerName, hand);
         }
         // make a queue with all the players
         final Queue<String> players = new LinkedList<>();
         players.addAll(this.getInitialPlayers());
-        //repeat until only 1 player is left
-        while (players.size() > 1) {
+        //repeat until there are no more cards in deck
+        while (Deck.deckSize > 1) {   
             //these are the cards played by the players on this round
-            Queue<Card> roundDeck = new LinkedList<>();
+            Queue<Card> roundDeck = new LinkedList<>(); //CHANGER CA 
 
             //take the first player form the queue
             String firstPlayerInRound = players.poll();
@@ -47,7 +47,7 @@ public abstract class WarGameEngine {
             //and put it back immediately also
             players.offer(secondPlayerInRound);
 
-            //loop until there is a winner for this round
+            //loop until there is a winner for this round //CHANGER CA AUSSI
             while (true) {
 
 
@@ -140,7 +140,7 @@ public abstract class WarGameEngine {
      * give the winner of a round
      *
      * @param contestantA     a contestant
-     * @param contestantB     another contestand
+     * @param contestantB     another contestant
      * @param contestantACard its card
      * @param contestantBCard its card
      * @return the name of the winner or null if it's a tie
