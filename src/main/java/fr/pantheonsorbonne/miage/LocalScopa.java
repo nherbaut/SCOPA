@@ -14,6 +14,10 @@ public class LocalScopa extends ScopaEngine {
     private final Set<String> initialPlayers;
     private final Map<String, Queue<Card>> playerCards = new HashMap<>();
 
+    protected Queue<Card> getPlayerCards(String playerName){
+        return playerCards.get(playerName);
+    }
+
     public LocalScopa(Set<String> initialPlayers) {
         this.initialPlayers = initialPlayers;
         for (String player : initialPlayers) {
@@ -80,4 +84,6 @@ public class LocalScopa extends ScopaEngine {
             return this.playerCards.get(player).poll();
         }
     }
+
+
 }

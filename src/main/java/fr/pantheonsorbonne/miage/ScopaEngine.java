@@ -4,11 +4,13 @@ import fr.pantheonsorbonne.miage.exception.NoMoreCardException;
 import fr.pantheonsorbonne.miage.game.Card;
 import fr.pantheonsorbonne.miage.game.Deck;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
-
+import java.util.*;
+import java.util.stream.Collectors;
 /**
  * this class is a abstract version of the engine, to be used locally on through the network
  */
@@ -21,6 +23,9 @@ public abstract class ScopaEngine {
      */
     public void play() {
         //send the initial hand to every players
+        Map<String, Queue<Card>> playerCollectedCards = new HashMap<>();
+        Map<String, Integer> playerCollectedScopa = new HashMap<>();
+       
         for (String playerName : getInitialPlayers()) {
             //get random cards
             Card[] cards = Deck.getRandomCards(CARDS_IN_HAND_INITIAL_COUNT);
@@ -28,34 +33,56 @@ public abstract class ScopaEngine {
             String hand = Card.cardsToString(cards);  //changer ça si on utilise pas le string
             //send them to this players
             giveCardsToPlayer(playerName, hand);
+            playerCollectedCards.put(playerName, new LinkedList<>());
+            playerCollectedScopa.put(playerName,0);
         }
+
+        Queue<Card> roundDeck = new LinkedList<>(); // la table du jeu
+        roundDeck.addAll(Arrays.asList(Deck.getRandomCards(4)));
+
         // make a queue with all the players
         final Queue<String> players = new LinkedList<>();
         players.addAll(this.getInitialPlayers());
         //repeat until there are no more cards in deck
+       
+        //a revoir la condition d'arret
         while (Deck.deckSize > 1) {   
             //these are the cards played by the players on this round
-            Queue<Card> roundDeck = new LinkedList<>(); //CHANGER CA 
+            
 
             //take the first player form the queue
-            String firstPlayerInRound = players.poll();
+            String currentPlayer = players.poll();
             //and put it immediately at the end
-            players.offer(firstPlayerInRound);
+            players.offer(currentPlayer);
 
-            //take the second player from the queue
-            String secondPlayerInRound = players.poll();
-            //and put it back immediately also
-            players.offer(secondPlayerInRound);
-
-            //loop until there is a winner for this round //CHANGER CA AUSSI
-            while (true) {
-
-
-                if (playRound(players, firstPlayerInRound, secondPlayerInRound, roundDeck)) break;
+            if (getPlayerCards(currentPlayer).size()>0){
+            Card pairCard = makePair(currentPlayer, roundDeck);
+            if (pairCard!=null){
+                Card retiredCard = removeRoundDeckCard(pairCard, roundDeck);
+                getPlayerCards(currentPlayer).remove(pairCard);
+                playerCollectedCards.get(currentPlayer).offer(retiredCard);
+                playerCollectedCards.get(currentPlayer).offer(pairCard);
+                if (roundDeck.isEmpty()){
+                    int counter=playerCollectedScopa.get(currentPlayer)+1;
+                    playerCollectedScopa.put(currentPlayer, counter);
+                }
             }
-
+            else {
+                try{
+                Card selectedCard = getCardFromPlayer(currentPlayer);
+                roundDeck.offer(selectedCard);
+                } catch (NoMoreCardException e){;}
+            }
+        }
+        else {
+            Card[] cards = Deck.getRandomCards(CARDS_IN_HAND_INITIAL_COUNT);
+            String hand = Card.cardsToString(cards);  //changer ça si on utilise pas le string
+            giveCardsToPlayer(currentPlayer, hand);        
+        }
 
         }
+
+
         //since we've left the loop, we have only 1 player left: the winner
         String winner = players.poll();
         //send him the gameover and leave
@@ -64,12 +91,76 @@ public abstract class ScopaEngine {
         System.exit(0);
     }
 
+    
+    String bestCount(Map<String, Queue<Card>> playerCollectedCards){
+        int maxcount=0;
+        String bestPlayer="";
+        for (String player: playerCollectedCards.keySet()){
+            if (playerCollectedCards.get(player).size()>maxcount){
+                maxcount=playerCollectedCards.get(player).size();
+                bestPlayer=player;
+            }
+        }
+        return bestPlayer;
+    }
+
+    String mostDiamonCount(Map<String, Queue<Card>> playerCollectedCards){
+        long maxcount=0;
+        String bestPlayer="";
+        for (String player: playerCollectedCards.keySet()){
+            long counter = playerCollectedCards.get(player).stream().filter(card->card.getColor().name().equals("DIAMON")).count();
+            if (counter>maxcount){
+                maxcount=counter;
+                bestPlayer=player;
+            }
+        }
+        return bestPlayer;
+    }    
+
+    String having7diamond(Map<String, Queue<Card>> playerCollectedCards){
+        for (String player: playerCollectedCards.keySet()){
+            if (playerCollectedCards.get(player).stream().filter(card->card.toString().equals("7D")).count()>0)
+                return  player;
+        }
+        return null;
+    }
+
+    Card removeRoundDeckCard(Card matchCard, Queue<Card> roundDeck){
+        Card returnCard;
+        for(Card card: roundDeck){
+            if (card.getValue().getRank()==matchCard.getValue().getRank()){
+                returnCard=card;
+                roundDeck.remove(card);
+                return returnCard;
+            }
+        }
+        return null;
+    }
+
+    Card makePair(String player, Queue<Card> roundDeck){
+        Queue<Card> playerCards=getPlayerCards(player);
+        Card selectedCard=null;
+        int maxValue=0;
+        for(Card card : playerCards){
+           if (roundDeck.stream().map(crd->card.getValue()).filter(val->val==card.getValue()).count()>0){
+                if (card.getValue().getRank()>maxValue){
+                    maxValue=card.getValue().getRank();
+                    selectedCard=card;
+                }
+           }
+        } 
+        return selectedCard;
+    }
+
     /**
      * provide the list of the initial players to play the game
      *
      * @return
      */
     protected abstract Set<String> getInitialPlayers();
+
+    protected abstract Queue<Card> getPlayerCards(String playerName);
+
 
     /**
      * give some card to a player
