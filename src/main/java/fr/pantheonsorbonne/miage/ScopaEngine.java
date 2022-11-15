@@ -47,11 +47,17 @@ public abstract class ScopaEngine {
        
         //a revoir la condition d'arret
         while (Deck.deckSize > 1) {   
-            //these are the cards played by the players on this round
-            
+           
 
             //take the first player form the queue
             String currentPlayer = players.poll();
+            System.out.print("player "+currentPlayer+": ");
+            getPlayerCards(currentPlayer).stream().forEach(c -> System.out.print(c.toFancyString()));
+            System.out.println();
+            System.out.print("RoundDeck: ");
+            roundDeck.stream().forEach(c -> System.out.print(c.toFancyString()));
+            System.out.println();            
+
             //and put it immediately at the end
             players.offer(currentPlayer);
 
@@ -69,6 +75,7 @@ public abstract class ScopaEngine {
             }
             else {
                 try{
+                // apply avoid to  put 7D strategy	
                 Card selectedCard = getCardFromPlayer(currentPlayer);
                 roundDeck.offer(selectedCard);
                 } catch (NoMoreCardException e){;}
@@ -104,7 +111,7 @@ public abstract class ScopaEngine {
         return bestPlayer;
     }
 
-    String mostDiamonCount(Map<String, Queue<Card>> playerCollectedCards){
+    String mostDenierCount(Map<String, Queue<Card>> playerCollectedCards){
         long maxcount=0;
         String bestPlayer="";
         for (String player: playerCollectedCards.keySet()){
@@ -117,7 +124,7 @@ public abstract class ScopaEngine {
         return bestPlayer;
     }    
 
-    String having7diamond(Map<String, Queue<Card>> playerCollectedCards){
+    String having7denier(Map<String, Queue<Card>> playerCollectedCards){
         for (String player: playerCollectedCards.keySet()){
             if (playerCollectedCards.get(player).stream().filter(card->card.toString().equals("7D")).count()>0)
                 return  player;
@@ -140,6 +147,19 @@ public abstract class ScopaEngine {
     Card makePair(String player, Queue<Card> roundDeck){
         Queue<Card> playerCards=getPlayerCards(player);
         Card selectedCard=null;
+        
+        // apply 7D strategy
+        for(Card card: roundDeck) {
+        	if (card.toString().equals("7D")) {
+        		for(Card pcard:getPlayerCards(player)) {
+        			if (pcard.getValue().getStringRepresentation().equals("7")) {
+        				return pcard;
+        			}
+        		}        		
+        	}
+        }
+        
+        // apply take max pair strategy
         int maxValue=0;
         for(Card card : playerCards){
            if (roundDeck.stream().map(crd->card.getValue()).filter(val->val==card.getValue()).count()>0){
@@ -151,6 +171,8 @@ public abstract class ScopaEngine {
         } 
         return selectedCard;
     }
+    
+    
 
     /**
      * provide the list of the initial players to play the game

@@ -135,4 +135,10 @@ public class ScopaNetworkEngine extends ScopaEngine {
 
     }
 
+    @Override
+    protected Queue<Card> getPlayerCards(String playerName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
