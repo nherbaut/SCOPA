@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * this class is a abstract version of the engine, to be used locally on through the network
@@ -25,6 +26,7 @@ public abstract class ScopaEngine {
         //send the initial hand to every players
         Map<String, Queue<Card>> playerCollectedCards = new HashMap<>();
         Map<String, Integer> playerCollectedScopa = new HashMap<>();
+        
 
         giveInitialHandToPLayers(playerCollectedCards, playerCollectedScopa);
 
@@ -89,6 +91,43 @@ public abstract class ScopaEngine {
         System.exit(0);
     }
 
+    // voir ce que fait l'autre fonction getWinner() line 308 + eventually la supp/modif
+    protected String getWinner(Map<String, Queue<Card>> playerCollectedCards){
+        int maxCount=0;
+        String winner = "";
+        Map<String, Integer> playersScores = countPlayersScores(playerCollectedCards);
+        for (Map.Entry player : playersScores.entrySet()){
+            if (playersScores.get(player.toString()) > maxCount){
+                maxCount=playersScores.get(player.toString());
+                winner=player.toString();
+            }
+        }
+        return winner;
+    }
+
+    protected int getWinnerScore(){
+        
+    }
+
+    protected Map<String, Integer> countPlayersScores (Map<String, Queue<Card>> playerCollectedCards){
+        Map<String, Integer> playerScore = new HashMap<>();
+        for (Map.Entry player : playerCollectedCards.entrySet()){
+            int count = 0;
+            if (player.toString().equals(bestCount(playerCollectedCards))){
+                count ++;
+            }
+            if (player.toString().equals(mostDenierCount(playerCollectedCards))){
+                count++;
+            }
+            if (player.toString().equals(havingSettebello(playerCollectedCards))){
+                count++;
+            }
+            playerScore.put(player.toString(), count);
+        }
+
+        return playerScore;
+    }
+
     protected List<Card> getInitialRoundDeck() {
         return Arrays.asList(Deck.getRandomCards(4));
     }
@@ -103,6 +142,7 @@ public abstract class ScopaEngine {
             giveCardsToPlayer(playerName, hand);
             playerCollectedCards.put(playerName, new LinkedList<>());
             playerCollectedScopa.put(playerName, 0);
+            
         }
     }
 
@@ -132,7 +172,7 @@ public abstract class ScopaEngine {
         return bestPlayer;
     }
 
-    String having7denier(Map<String, Queue<Card>> playerCollectedCards) {
+    String havingSettebello(Map<String, Queue<Card>> playerCollectedCards) {
         for (String player : playerCollectedCards.keySet()) {
             if (playerCollectedCards.get(player).stream().filter(card -> card.toString().equals("7D")).count() > 0)
                 return player;
