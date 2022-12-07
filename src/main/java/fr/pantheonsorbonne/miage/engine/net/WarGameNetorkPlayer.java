@@ -1,5 +1,7 @@
-package fr.pantheonsorbonne.miage;
+package fr.pantheonsorbonne.miage.engine.net;
 
+import fr.pantheonsorbonne.miage.Facade;
+import fr.pantheonsorbonne.miage.PlayerFacade;
 import fr.pantheonsorbonne.miage.game.Card;
 import fr.pantheonsorbonne.miage.model.Game;
 import fr.pantheonsorbonne.miage.model.GameCommand;

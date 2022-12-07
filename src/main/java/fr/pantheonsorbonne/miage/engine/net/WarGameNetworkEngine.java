@@ -1,7 +1,12 @@
-package fr.pantheonsorbonne.miage;
+package fr.pantheonsorbonne.miage.engine.net;
 
+import fr.pantheonsorbonne.miage.Facade;
+import fr.pantheonsorbonne.miage.HostFacade;
+import fr.pantheonsorbonne.miage.engine.WarGameEngine;
 import fr.pantheonsorbonne.miage.exception.NoMoreCardException;
 import fr.pantheonsorbonne.miage.game.Card;
+import fr.pantheonsorbonne.miage.game.Deck;
+import fr.pantheonsorbonne.miage.game.RandomDeck;
 import fr.pantheonsorbonne.miage.model.Game;
 import fr.pantheonsorbonne.miage.model.GameCommand;
 
@@ -11,13 +16,14 @@ import java.util.*;
  * This class implements the war game with the network engine
  */
 public class WarGameNetworkEngine extends WarGameEngine {
-    private static final int PLAYER_COUNT = 3;
+    private static final int PLAYER_COUNT = 4;
 
     private final HostFacade hostFacade;
     private final Set<String> players;
     private final Game war;
 
-    public WarGameNetworkEngine(HostFacade hostFacade, Set<String> players, fr.pantheonsorbonne.miage.model.Game war) {
+    public WarGameNetworkEngine(Deck deck, HostFacade hostFacade, Set<String> players, fr.pantheonsorbonne.miage.model.Game war) {
+        super(deck, 5);
         this.hostFacade = hostFacade;
         this.players = players;
         this.war = war;
@@ -37,8 +43,9 @@ public class WarGameNetworkEngine extends WarGameEngine {
         //wait for enough players to join
         hostFacade.waitForExtraPlayerCount(PLAYER_COUNT);
 
-        WarGameEngine host = new WarGameNetworkEngine(hostFacade, war.getPlayers(), war);
+        WarGameEngine host = new WarGameNetworkEngine(new RandomDeck(), hostFacade, war.getPlayers(), war);
         host.play();
+        System.exit(0);
 
 
     }
@@ -49,8 +56,8 @@ public class WarGameNetworkEngine extends WarGameEngine {
      * @return
      */
     @Override
-    protected Set<String> getInitialPlayers() {
-        return this.war.getPlayers();
+    protected List<String> getInitialPlayers() {
+        return new ArrayList<>(this.war.getPlayers());
     }
 
     /**

@@ -1,7 +1,10 @@
-package fr.pantheonsorbonne.miage;
+package fr.pantheonsorbonne.miage.engine.local;
 
+import fr.pantheonsorbonne.miage.engine.WarGameEngine;
 import fr.pantheonsorbonne.miage.exception.NoMoreCardException;
 import fr.pantheonsorbonne.miage.game.Card;
+import fr.pantheonsorbonne.miage.game.Deck;
+import fr.pantheonsorbonne.miage.game.RandomDeck;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,10 +14,11 @@ import java.util.stream.Collectors;
  */
 public class LocalWarGame extends WarGameEngine {
 
-    private final Set<String> initialPlayers;
+    private final List<String> initialPlayers;
     private final Map<String, Queue<Card>> playerCards = new HashMap<>();
 
-    public LocalWarGame(Set<String> initialPlayers) {
+    public LocalWarGame(Deck deck, int initialHandSize, List<String> initialPlayers) {
+        super(deck, initialHandSize);
         this.initialPlayers = initialPlayers;
         for (String player : initialPlayers) {
             playerCards.put(player, new LinkedList<>());
@@ -22,13 +26,15 @@ public class LocalWarGame extends WarGameEngine {
     }
 
     public static void main(String... args) {
-        LocalWarGame localWarGame = new LocalWarGame(Set.of("Joueur1", "Joueur2", "Joueur3"));
+        LocalWarGame localWarGame = new LocalWarGame(new RandomDeck(), 5, Arrays.asList("Joueur1", "Joueur2", "Joueur3"));
         localWarGame.play();
+        System.exit(0);
 
     }
 
+
     @Override
-    protected Set<String> getInitialPlayers() {
+    protected List<String> getInitialPlayers() {
         return this.initialPlayers;
     }
 
@@ -74,7 +80,8 @@ public class LocalWarGame extends WarGameEngine {
 
     @Override
     protected Card getCardFromPlayer(String player) throws NoMoreCardException {
-        if (this.playerCards.get(player).isEmpty()) {
+
+        if (!this.playerCards.containsKey(player) || this.playerCards.get(player).isEmpty()) {
             throw new NoMoreCardException();
         } else {
             return this.playerCards.get(player).poll();

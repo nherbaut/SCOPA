@@ -1,20 +1,23 @@
-package fr.pantheonsorbonne.miage;
+package fr.pantheonsorbonne.miage.engine;
 
 import fr.pantheonsorbonne.miage.exception.NoMoreCardException;
 import fr.pantheonsorbonne.miage.game.Card;
 import fr.pantheonsorbonne.miage.game.Deck;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * this class is a abstract version of the engine, to be used locally on through the network
  */
 public abstract class WarGameEngine {
 
-    public static final int CARDS_IN_HAND_INITIAL_COUNT = 3;
+    public final int initialHandSize;
+    private final Deck deck;
+
+    protected WarGameEngine(Deck deck, int initialHandSize) {
+        this.deck = deck;
+        this.initialHandSize = initialHandSize;
+    }
 
     /**
      * play a war game wit the provided players
@@ -23,7 +26,7 @@ public abstract class WarGameEngine {
         //send the initial hand to every players
         for (String playerName : getInitialPlayers()) {
             //get random cards
-            Card[] cards = Deck.getRandomCards(CARDS_IN_HAND_INITIAL_COUNT);
+            Card[] cards = deck.getCards(initialHandSize);
             // transform them to String
             String hand = Card.cardsToString(cards);
             //send them to this players
@@ -61,7 +64,7 @@ public abstract class WarGameEngine {
         //send him the gameover and leave
         declareWinner(winner);
         System.out.println(winner + " won! bye");
-        System.exit(0);
+
     }
 
     /**
@@ -69,7 +72,7 @@ public abstract class WarGameEngine {
      *
      * @return
      */
-    protected abstract Set<String> getInitialPlayers();
+    protected abstract List<String> getInitialPlayers();
 
     /**
      * give some card to a player
@@ -95,12 +98,17 @@ public abstract class WarGameEngine {
         Card firstPlayerCard = getCardOrGameOver(roundDeck, firstPlayerInRound, secondPlayerInRound);
         if (firstPlayerCard == null) {
             players.remove(firstPlayerInRound);
+            this.giveCardsToPlayer(roundDeck, secondPlayerInRound);
             return true;
         }
         //here we also get the second player card
         Card secondPlayerCard = getCardOrGameOver(roundDeck, secondPlayerInRound, firstPlayerInRound);
         if (secondPlayerCard == null) {
             players.remove(secondPlayerInRound);
+            //
+            this.giveCardsToPlayer(roundDeck, firstPlayerInRound);
+            this.giveCardsToPlayer(Arrays.asList(firstPlayerCard), firstPlayerInRound);
+
             return true;
         }
 
@@ -137,6 +145,14 @@ public abstract class WarGameEngine {
     protected abstract Card getCardOrGameOver(Collection<Card> leftOverCard, String cardProviderPlayer, String cardProviderPlayerOpponent);
 
     /**
+     * give some card to a player
+     *
+     * @param playerName the player that will receive the cards
+     * @param cards      the cards as a collection of cards
+     */
+    protected abstract void giveCardsToPlayer(Collection<Card> cards, String playerName);
+
+    /**
      * give the winner of a round
      *
      * @param contestantA     a contestant
@@ -153,14 +169,6 @@ public abstract class WarGameEngine {
         }
         return null;
     }
-
-    /**
-     * give some card to a player
-     *
-     * @param playerName the player that will receive the cards
-     * @param cards      the cards as a collection of cards
-     */
-    protected abstract void giveCardsToPlayer(Collection<Card> cards, String playerName);
 
     /**
      * get a card from a player
