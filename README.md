@@ -1,4 +1,4 @@
-# ![Static Badge](https://img.shields.io/badge/S-yellow) ![Static Badge](https://img.shields.io/badge/C-yellow) ![Static Badge](https://img.shields.io/badge/A-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/L-yellow) ![Static Badge](https://img.shields.io/badge/E-yellow)
+# SCRABBLE ![Static Badge](https://img.shields.io/badge/S-yellow) ![Static Badge](https://img.shields.io/badge/C-yellow) ![Static Badge](https://img.shields.io/badge/A-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/L-yellow) ![Static Badge](https://img.shields.io/badge/E-yellow)
 
 
 
