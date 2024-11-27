@@ -1,4 +1,4 @@
-# ![Static Badge](https://img.shields.io/badge/S-yellow)
+# ![Static Badge](https://img.shields.io/badge/S-yellow) ![Static Badge](https://img.shields.io/badge/C-yellow)
 
 
 
