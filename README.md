@@ -1,3 +1,7 @@
+# https://img.shields.io/badge/S-yellow
+
+
+
 # Règles
 
 Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
