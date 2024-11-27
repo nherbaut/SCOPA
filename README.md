@@ -21,14 +21,14 @@ Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
 - Anglais ![Drapeau Angleterre](https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/20px-Flag_of_England.svg.png)
 
-- 0 point: Joker ×2
-- 1 point : E ×12, A ×9, I ×9, O ×8, R ×6, N ×6, T ×6, L ×4, S ×4, U ×4
-- 2 points : D ×4, G ×3
-- 3 points : B ×2, C ×2, M ×2, P ×2
-- 4 points : F ×2, H ×2, V ×2, W ×2, Y ×2
-- 5 points : K ×1
-- 8 points : J ×1, X ×1
-- 10 points : Q ×1, Z ×1
+    - 0 point: Joker ×2
+    - 1 point : E ×12, A ×9, I ×9, O ×8, R ×6, N ×6, T ×6, L ×4, S ×4, U ×4
+    - 2 points : D ×4, G ×3
+    - 3 points : B ×2, C ×2, M ×2, P ×2
+    - 4 points : F ×2, H ×2, V ×2, W ×2, Y ×2
+    - 5 points : K ×1
+    - 8 points : J ×1, X ×1
+    - 10 points : Q ×1, Z ×1
 
 - Espagnol ![Drapeau Espagne](https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/20px-Flag_of_Spain.svg.png)
 
