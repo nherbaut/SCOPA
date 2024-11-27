@@ -3,7 +3,7 @@
 
 
 # Règles
-![Drapeau Français](https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png)
+
 
 Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
@@ -37,7 +37,7 @@ Un plateau classique de Scrabble est généré avec des cases spéciales :
 - Chaque joueur débute en français comme langue active.
 
 4. Langues utilisées 🌍 :
-- Français
+- Français ![Drapeau Français](https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png)
 - Anglais
 - Espagnol
 
