@@ -2,12 +2,11 @@
 
 
 # Règles du jeu 🎮
-
-- 1. Objectif du jeu 🎯
+1. Objectif du jeu 🎯
     - But : Être le dernier joueur en lice avec des lettres dans sa pile et avoir le plus grand score.
     - Le joueur avec le plus grand total de points à la fin de la partie, après la perte de toutes les lettres d'un autre joueur ou l'incapacité de jouer, gagne.
     - 
-- 2. Cases spéciales ✨
+2. Cases spéciales ✨
     - Case "Changement de langue" 🔄 : Lorsqu’un joueur pose une lettre sur cette case, sa langue active change pour celle définie par la case (choix entre français, anglais, ou espagnol).
     - Cases de bonus ⭐ :
     - Double lettre : Double la valeur de la lettre posée.
@@ -15,7 +14,7 @@
     - Double mot : Double la valeur du mot formé.
     - Triple mot : Triple la valeur du mot formé.
 
-- 3. Score 💵
+3. Score 💵
     - Chaque mot formé rapporte des points en fonction des lettres utilisées et des bonus appliqués grâce aux cases spéciales.
     - Points par lettre : Chaque lettre a une valeur propre, et celle-ci est ajoutée au score du joueur lorsqu’elle est utilisée dans un mot.
     - Bonus : Les cases spéciales permettent de doubler ou tripler la valeur des lettres ou des mots.
