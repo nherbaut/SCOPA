@@ -7,16 +7,39 @@
 
 Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
-Valeur des lettres
+4. Valeur des lettres
 
-Lettre "J" du jeu francophone
-A,E,I,L,N,O,R,S,T,U : 1 point
-D,G,M : 2 points
-B,C,P : 3 points
-F,H,V : 4 points
-J,Q : 8 points
-K,W,X,Y,Z : 10 points
-Joker : 0 point
+- Français ![Drapeau Français](https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/20px-Flag_of_France.svg.png)
+
+0 point : Joker ×2
+1 point : E ×15, A ×9, I ×8, N ×6, O ×6, R ×6, S ×6, T ×6, U ×6, L ×5
+2 points : D ×3, G ×2, M ×3
+3 points : B ×2, C ×2, P ×2
+4 points : F ×2, H ×2, V ×2
+8 points : J ×1, Q ×1
+10 points : K ×1, W ×1, X ×1, Y ×1, Z ×1
+
+- Anglais ![Drapeau Angleterre](https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/20px-Flag_of_England.svg.png)
+
+0 point: Joker ×2
+1 point : E ×12, A ×9, I ×9, O ×8, R ×6, N ×6, T ×6, L ×4, S ×4, U ×4
+2 points : D ×4, G ×3
+3 points : B ×2, C ×2, M ×2, P ×2
+4 points : F ×2, H ×2, V ×2, W ×2, Y ×2
+5 points : K ×1
+8 points : J ×1, X ×1
+10 points : Q ×1, Z ×1
+
+- Espagnol ![Drapeau Espagne](https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/20px-Flag_of_Spain.svg.png)
+
+0 point: Joker ×2 
+1 point : A ×12, E ×12, O ×9, I ×6, S ×6, N ×5, R ×5, U ×5, L ×4, T ×4
+2 points : D ×5, G ×2
+3 points : C ×4, B ×2, M ×2, P ×2
+4 points : H ×2, F ×1, V ×1, Y ×1
+5 points : CH ×1, Q ×1
+8 points : J ×1, LL ×1, Ñ ×1, RR ×1, X ×1
+10 points : Z ×1
 
 # Mise en place 🛠️
 1. Distribution des lettres 🅰️
