@@ -57,7 +57,7 @@
 1. Distribution des lettres 🅰️
 - Chaque joueur commence avec une pile aléatoire de lettres.
 - Les piles doivent contenir 7 lettre maximum.
-- 
+  
 2. Plateau de jeu 🎲
 Un plateau classique de Scrabble est généré avec des cases spéciales :
 
@@ -86,9 +86,19 @@ Les joueurs sont répartis dans l'ordre d'arrivée. Chaque joueur affronte le pr
 * Lors d'un duel, chacun de joueur joue une carte de sa pile. Le joueur ayant joué la carte de plus haute valeur l'emporte et met sous sa pile les cartes jouées, en les mélangeant.
 * Si les deux joueurs ont joué une carte de même valeur, le duel recommence en accumulant les cartes jouées de telle sorte à ce que le gagnant empoche la totalité des cartes du duel.
 
-## Fin de la partie
+# Fin de la partie 🏁
+1. Conditions de fin de partie ⏹️
+- La partie se termine lorsqu’un joueur :
+    - N’a plus de lettres à jouer. 🅾️
+    - Ne peut plus poser de mots valides. 🚫
+      
+2. Détermination du gagnant 🏆
+- Le gagnant est le joueur avec le plus grand score à la fin de la partie.
+- Si un joueur n’a plus de lettres ou ne peut plus jouer, son score est comptabilisé et comparé à celui de l’autre joueur.
 
-Le gagnant est le dernier joueur en lice.
+
+
+
 
 ### Détail des classes principales
 
