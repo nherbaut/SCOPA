@@ -1,13 +1,26 @@
 # SCRABBLE ![Static Badge](https://img.shields.io/badge/S-yellow) ![Static Badge](https://img.shields.io/badge/C-yellow) ![Static Badge](https://img.shields.io/badge/A-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/B-yellow) ![Static Badge](https://img.shields.io/badge/L-yellow) ![Static Badge](https://img.shields.io/badge/E-yellow)
 
 
+# Règles du jeu 🎮
 
-# Règles
+- 1. Objectif du jeu 🎯
+    - But : Être le dernier joueur en lice avec des lettres dans sa pile et avoir le plus grand score.
+    - Le joueur avec le plus grand total de points à la fin de la partie, après la perte de toutes les lettres d'un autre joueur ou l'incapacité de jouer, gagne.
+    - 
+- 2. Cases spéciales ✨
+    - Case "Changement de langue" 🔄 : Lorsqu’un joueur pose une lettre sur cette case, sa langue active change pour celle définie par la case (choix entre français, anglais, ou espagnol).
+    - Cases de bonus ⭐ :
+    - Double lettre : Double la valeur de la lettre posée.
+    - Triple lettre : Triple la valeur de la lettre posée.
+    - Double mot : Double la valeur du mot formé.
+    - Triple mot : Triple la valeur du mot formé.
 
+- 3. Score 💵
+    - Chaque mot formé rapporte des points en fonction des lettres utilisées et des bonus appliqués grâce aux cases spéciales.
+    - Points par lettre : Chaque lettre a une valeur propre, et celle-ci est ajoutée au score du joueur lorsqu’elle est utilisée dans un mot.
+    - Bonus : Les cases spéciales permettent de doubler ou tripler la valeur des lettres ou des mots.
 
-Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
-
-4. Valeur des lettres
+4. Valeur des lettres ⭐
 
 - Français ![Drapeau Français](https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/20px-Flag_of_France.svg.png)
 
