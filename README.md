@@ -9,8 +9,8 @@ Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
 # Mise en place 🛠️
 1. Distribution des lettres 🅰️
-- Chaque joueur commence avec une pile aléatoire de lettres, face cachée.
-- Les piles sont identiques en nombre, mais les lettres sont distribuées au hasard.
+- Chaque joueur commence avec une pile aléatoire de lettres.
+- Les piles doivent contenir 7 lettre maximum.
 - 
 2. Plateau de jeu 🎲
 Un plateau classique de Scrabble est généré avec des cases spéciales :
