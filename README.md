@@ -77,9 +77,10 @@ Un plateau classique de Scrabble est généré avec des cases spéciales :
 - Espagnol ![Drapeau Espagne](https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/20px-Flag_of_Spain.svg.png)
 
 
-# Déroulé de la partie
-
-Les joueurs sont répartis dans l'ordre d'arrivée. Chaque joueur affronte le prochain dans un duel, à tour de rôle (le dernier joueur affronte le premier). Si un joueur n'a plus de carte, il perd la partie et ne peut plus joueur.
+# Déroulé de la partie 🔄
+1. Tours de jeu ⏳
+- Les joueurs jouent à tour de rôle.
+- À chaque tour, un joueur doit former un mot valide sur le plateau en respectant sa langue active.
 
 # Déroulé des duels
 
