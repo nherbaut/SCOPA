@@ -2,9 +2,30 @@
 
 Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
-## Mise en place
 
-Chaque joueur reçoit un nombre déterminé de cartes tirées aléatoirement, qu'il garde face cachée.
+# Mise en place 🛠️
+1. Distribution des lettres 🅰️
+- Chaque joueur commence avec une pile aléatoire de lettres, face cachée.
+- Les piles sont identiques en nombre, mais les lettres sont distribuées au hasard.
+- 
+2. Plateau de jeu 🎲
+Un plateau classique de Scrabble est généré avec des cases spéciales :
+
+- Case "Changement de langue" : Change la langue active du joueur .
+- Cases bonus ⭐ :
+    → Double lettre : Double la valeur d’une lettre.
+    → Triple lettre : Triple la valeur d’une lettre.
+    → Double mot : Double le score total du mot formé.
+    → Triple mot : Triple le score total du mot formé.
+
+3. Langue initiale 🥖
+- Chaque joueur débute en français comme langue active.
+
+4. Langues utilisées 🌍 :
+- Français
+- Anglais
+- Espagnol
+
 
 ## Déroulé de la partie
 
