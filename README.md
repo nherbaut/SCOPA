@@ -3,9 +3,20 @@
 
 
 # Règles
+![Drapeau Français](https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/320px-Flag_of_France.svg.png)
 
 Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
 
+Valeur des lettres
+
+Lettre "J" du jeu francophone
+A,E,I,L,N,O,R,S,T,U : 1 point
+D,G,M : 2 points
+B,C,P : 3 points
+F,H,V : 4 points
+J,Q : 8 points
+K,W,X,Y,Z : 10 points
+Joker : 0 point
 
 # Mise en place 🛠️
 1. Distribution des lettres 🅰️
