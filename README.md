@@ -20,7 +20,7 @@ Lorsque le début de la partie est lancée, chaque joueur doit regarder sa carte
 ## Fin de la partie
 
 La partie prend fin lorsque :
-- Un joueur n'a plus de carte
+- Un joueur n'a plus de carte.
 
 
 
