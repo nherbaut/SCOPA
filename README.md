@@ -59,8 +59,7 @@
 - Les piles doivent contenir 7 lettre maximum.
   
 2. Plateau de jeu 🎲
-Un plateau classique de Scrabble est généré avec des cases spéciales :
-
+- Plateau de 15x15
 - Case "Changement de langue" : Change la langue active du joueur .
 - Cases bonus ⭐ :
     → Double lettre : Double la valeur d’une lettre.
