@@ -4,8 +4,8 @@ Le jeu se joue à minimum 2 joueurs. Nous partons du principe que nous sommes 3 
 
 ## Mise en place
 
-Le paquet est composé de 55 cartes, qui seront par la suite divisées en 3 (chaque joueur a donc respectivement, face cachée, un tas de 18 cartes). Une carte est exposée face visible au centre des joueurs.
-Lorsque les joueurs reçoivent leur paquet respectif de cartes face cachée, ils devront le retourner une fois la partie commencée.
+Le paquet est composé de 55 cartes, avec 22 symboles différents. Chaque carte possède 8 symboles.  La totalité des cartes sera par la suite divisée en 3 (chaque joueur a donc respectivement, face cachée, un tas de 18 cartes). Une carte est exposée face visible au centre des joueurs.
+Lorsque les joueurs reçoivent leur paquet de cartes respectif face cachée, ils devront le retourner une fois la partie commencée.
 
 ## Déroulé de la partie
 
