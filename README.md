@@ -53,6 +53,9 @@
     - 8 points : J ×1, LL ×1, Ñ ×1, RR ×1, X ×1
     - 10 points : Z ×1
 
+5. Directions
+   - Le joueur peut jouer que horizontalement ou verticalement.
+
 # Mise en place 🛠️
 1. Distribution des lettres 🅰️
 - Chaque joueur commence avec une pile aléatoire de lettres.
@@ -80,6 +83,7 @@
 1. Tours de jeu ⏳
 - Les joueurs jouent à tour de rôle.
 - À chaque tour, un joueur doit former un mot valide sur le plateau en respectant sa langue active.
+2. 
 
 # Déroulé des duels
 
