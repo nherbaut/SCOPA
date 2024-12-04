@@ -4,23 +4,34 @@ Le jeu se joue à minimum 2 joueurs. Nous partons du principe que nous sommes 3 
 
 ## Mise en place
 
-Le paquet est composé de 55 cartes, avec 22 symboles différents. Chaque carte possède 8 symboles.  La totalité des cartes sera par la suite divisée en 3 (chaque joueur a donc respectivement, face cachée, un tas de 18 cartes). Une carte est exposée face visible au centre des joueurs.
-Lorsque les joueurs reçoivent leur paquet de cartes respectif face cachée, ils devront le retourner une fois la partie commencée.
+• Le jeu se joue avec 28 dominos, chacun divisé en deux parties affichant des nombres de 0 à 6. Toutes les combinaisons possibles sont présentes.
+• Chaque joueur reçoit 7 dominos. Les dominos restants forment la pioche si le nombre de joueurs est inférieur à 4.
+• Le joueur qui commence est celui qui possède le double le plus élevé (ou le plus grand domino s’il n’y a pas de double).
+• Le jeu suit le sens inverse des aiguilles d’une montre.
 
 ## Déroulé de la partie
 
-Les joueurs sont réunis tous ensemble, ils ont toutes les cartes de leur paquet face caché, sauf leur première carte. Une carte est retournée au milieu de tous les joueurs. 
-
-Lorsque le début de la partie est lancée, chaque joueur doit regarder sa carte et voir s'il a un symbole en commun avec la carte au milieu :
-
- - S'il a un symbole en commun sur sa carte et sur la carte du milieu, il dépose sa carte sur la carte du milieu le plus rapidement possible et le processus recommence. 
-
- - S'il n'arrive pas à trouvé un symbole commun avant un autre joueur, le processus recommence.
+• Les joueurs posent un domino à l’une des extrémités du plateau, en respectant la règle : une des faces du domino doit correspondre à celle d’un domino déjà posé.
+• Les doubles doivent être placés obliquement pour faciliter leur repérage.
+• Si un joueur ne peut pas jouer, il pioche des dominos jusqu’à pouvoir poser, sauf si la pioche est vide, auquel cas il passe son tour.
 
 ## Fin de la partie
 
-La partie prend fin lorsque :
-- Un joueur n'a plus de carte.
+• La partie se termine lorsqu’un joueur pose tous ses dominos, devenant ainsi le vainqueur.
+
+## Règles supplémentaires 
+
+• Domino Bonus :
+Si les points des deux extrémités ouvertes totalisent un multiple de 5 (ex. : 10, 15), le joueur gagne un bonus de points.
+• Pioche Limitée :
+Chaque joueur ne peut piocher qu’un maximum de 3 fois par partie.
+• Inversion des Tours :
+Lorsqu’un joueur pose un double, le sens du jeu change immédiatement (horaire ↔ anti-horaire).
+• Blocage Stratégique :
+Si un joueur ne peut ni poser de domino ni piocher, il subit une pénalité de points.
+• Domino Joker :
+Un domino spécial (par exemple, [0|0]) peut être joué à tout moment et prendre la valeur choisie par le joueur.
+
 
 
 
